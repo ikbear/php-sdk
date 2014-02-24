@@ -253,5 +253,13 @@ function Qiniu_RS_BatchCopy($self, $entryPairs)
 	return Qiniu_RS_Batch($self, $params);
 }
 
+function Qiniu_PFop($self, $bucket, $key, $fop, $notifyUrl)
+{
+  global $QINIU_API_HOST;
+  $url = $QINIU_API_HOST . '/pfop/';
+  $params = 'bucket=' . $bucket . '&key=' . $key . "&fops=" . $fop . "&notifyURL=" . $notifyUrl;
+  return Qiniu_Client_CallWithForm($self, $url, $params);
+}
+
 // ----------------------------------------------------------
 
